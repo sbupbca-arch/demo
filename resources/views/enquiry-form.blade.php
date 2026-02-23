@@ -67,6 +67,15 @@
             justify-content: center;
             margin-right: 2.4mm;
             background: #dcdcdc;
+            overflow: hidden;
+        }
+
+        .logo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            background: #ffffff;
         }
 
         .logo-inner {
@@ -425,35 +434,37 @@
         }
 
         .left-ribbon {
-            width: 95%;
+            width: 97.4%;
             background: #595f68;
             color: #ffffff;
-            font-size: 7.6mm;
+            font-size: 5.15mm;
             font-weight: 700;
-            line-height: 8.7mm;
-            height: 9.2mm;
+            line-height: 8.35mm;
+            height: 8.65mm;
             text-align: center;
-            transform: skewX(-12deg);
-            margin-bottom: 2.6mm;
-            margin-left: 1.4mm;
-            letter-spacing: 0.08mm;
+            transform: skewX(-10deg);
+            margin-bottom: 2.15mm;
+            margin-left: 1.1mm;
+            letter-spacing: 0.02mm;
+            white-space: nowrap;
+            padding: 0 2.25mm;
         }
 
         .left-ribbon span {
             display: block;
-            transform: skewX(12deg);
+            transform: skewX(10deg);
         }
 
         .discussion-list {
-            margin-top: 0.4mm;
+            margin-top: 0.9mm;
         }
 
         .discussion-row {
             display: flex;
             align-items: center;
-            margin-bottom: 1.27mm;
-            line-height: 1.06;
-            font-size: 4.18mm;
+            margin-bottom: 1.18mm;
+            line-height: 1.09;
+            font-size: 3.97mm;
             color: #333333;
         }
 
@@ -515,8 +526,8 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 1.52mm;
-            font-size: 3.6mm;
-            line-height: 1.17;
+            font-size: 3.75mm;
+            line-height: 1.2;
         }
 
         .notice-check {
@@ -570,6 +581,7 @@
     $checks = $form['checks'] ?? [];
     $counsellingChecks = $form['counselling_checks'] ?? [];
     $noticeChecks = $form['notice_checks'] ?? [];
+    $logoSrc = $form['logo_src'] ?? ($logoSrc ?? '');
     $siblings = array_values($form['siblings'] ?? []);
     $references = array_values($form['references'] ?? []);
 
@@ -648,7 +660,11 @@
         <div class="brand-box">
             <div class="brand-main-row">
                 <div class="logo-square">
-                    <div class="logo-inner">b</div>
+                    @if (!empty($logoSrc))
+                        <img src="{{ $logoSrc }}" alt="Bansal Classes Logo" class="logo-image">
+                    @else
+                        <div class="logo-inner">b</div>
+                    @endif
                 </div>
                 <div class="brand-text">
                     <div class="brand-line1">Rajasthan Kota's Pioneer Brand of India</div>
